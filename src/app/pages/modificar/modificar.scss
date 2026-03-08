@@ -1,0 +1,503 @@
+// =====================================================================
+// VARIABLES (misma paleta que el resto de la aplicación)
+// =====================================================================
+$color-oscuro: #1a1a18;
+$color-dorado: #b89a6a;
+$color-dorado-claro: #d4b896;
+$color-crema: #f5f0e8;
+$color-gris: #6b6560;
+$color-gris-claro: #e8e2d9;
+$color-error: #c0392b;
+
+$fuente-serif: 'Cormorant Garamond', 'Garamond', Georgia, serif;
+$fuente-sans: 'Jost', 'Gill Sans', 'Optima', sans-serif;
+
+$max-ancho: 700px;
+$transicion: all 0.25s ease;
+
+@use 'sass:color';
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:host {
+    display: block;
+    background-color: $color-crema;
+    color: $color-oscuro;
+    font-family: $fuente-sans;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: $max-ancho;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+// =====================================================================
+// CABECERA (idéntica a formulario)
+// =====================================================================
+.pagina-header {
+    background: $color-oscuro;
+    color: #fff;
+    text-align: center;
+    padding: 48px 0 40px;
+
+    &__volver {
+        display: inline-block;
+        font-family: $fuente-sans;
+        font-size: 0.75rem;
+        font-weight: 400;
+        letter-spacing: 0.15em;
+        color: rgba(255, 255, 255, 0.45);
+        text-decoration: none;
+        margin-bottom: 32px;
+        transition: $transicion;
+
+        &:hover {
+            color: $color-dorado;
+        }
+    }
+
+    &__pretitulo {
+        font-family: $fuente-sans;
+        font-size: 0.7rem;
+        font-weight: 400;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: $color-dorado;
+        margin-bottom: 12px;
+    }
+
+    &__titulo {
+        font-family: $fuente-serif;
+        font-size: clamp(2rem, 6vw, 3.2rem);
+        font-weight: 300;
+        font-style: italic;
+        color: #fff;
+        line-height: 1.1;
+        margin-bottom: 12px;
+    }
+
+    &__fecha {
+        font-family: $fuente-sans;
+        font-size: 0.75rem;
+        font-weight: 300;
+        letter-spacing: 0.4em;
+        color: rgba(255, 255, 255, 0.45);
+    }
+}
+
+// =====================================================================
+// AVISO INFORMATIVO
+// =====================================================================
+.formulario-aviso {
+    font-family: $fuente-sans;
+    font-size: 0.85rem;
+    color: $color-gris;
+    line-height: 1.6;
+    padding: 16px 20px;
+    border-left: 3px solid $color-dorado;
+    background: rgba($color-dorado, 0.06);
+    margin-bottom: 40px;
+}
+
+// =====================================================================
+// ESTADO: CARGANDO
+// =====================================================================
+.estado-carga {
+    padding: 100px 0;
+    text-align: center;
+
+    &__spinner {
+        width: 32px;
+        height: 32px;
+        border: 2px solid $color-gris-claro;
+        border-top-color: $color-dorado;
+        border-radius: 50%;
+        margin: 0 auto 24px;
+        animation: girar 0.8s linear infinite;
+    }
+
+    &__texto {
+        font-family: $fuente-sans;
+        font-size: 0.85rem;
+        color: $color-gris;
+        letter-spacing: 0.1em;
+    }
+}
+
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// =====================================================================
+// ESTADO: ERROR DE CARGA
+// =====================================================================
+.estado-error {
+    padding: 100px 0;
+    text-align: center;
+
+    &__icono {
+        font-size: 1.5rem;
+        color: $color-error;
+        margin-bottom: 24px;
+    }
+
+    &__titulo {
+        font-family: $fuente-serif;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 300;
+        font-style: italic;
+        margin-bottom: 16px;
+    }
+
+    &__texto {
+        font-family: $fuente-sans;
+        font-size: 0.9rem;
+        color: $color-gris;
+        line-height: 1.7;
+        max-width: 420px;
+        margin: 0 auto 32px;
+    }
+}
+
+.btn-secundario {
+    display: inline-block;
+    padding: 14px 40px;
+    border: 1px solid $color-oscuro;
+    color: $color-oscuro;
+    font-family: $fuente-sans;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: $transicion;
+
+    &:hover {
+        background: $color-oscuro;
+        color: $color-crema;
+    }
+}
+
+// =====================================================================
+// FORMULARIO (idéntico a formulario.scss)
+// =====================================================================
+.formulario-seccion {
+    padding: 64px 0 80px;
+}
+
+.grupo {
+    border: none;
+    padding: 0;
+    margin-bottom: 48px;
+
+    &__titulo {
+        font-family: $fuente-sans;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: $color-dorado;
+        padding-bottom: 16px;
+        border-bottom: 1px solid $color-gris-claro;
+        margin-bottom: 32px;
+        width: 100%;
+    }
+}
+
+.campo-fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+
+    @media (max-width: 560px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.campo {
+    margin-bottom: 24px;
+
+    &__label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: $fuente-sans;
+        font-size: 0.78rem;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        color: $color-oscuro;
+        margin-bottom: 8px;
+    }
+
+    &__badge {
+        font-size: 0.65rem;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        color: $color-gris;
+        background: $color-gris-claro;
+        padding: 2px 8px;
+        text-transform: uppercase;
+    }
+
+    &__descripcion {
+        font-family: $fuente-sans;
+        font-size: 0.8rem;
+        color: $color-gris;
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+
+    &__input {
+        display: block;
+        width: 100%;
+        padding: 12px 16px;
+        background: #fff;
+        border: 1px solid $color-gris-claro;
+        border-radius: 0;
+        font-family: $fuente-sans;
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: $color-oscuro;
+        transition: $transicion;
+        appearance: none;
+        outline: none;
+
+        &::placeholder {
+            color: color.adjust($color-gris, $lightness: 20%);        
+        }
+
+        &:focus {
+            border-color: $color-dorado;
+            box-shadow: 0 0 0 3px rgba($color-dorado, 0.12);
+        }
+
+        // Campo deshabilitado: visualmente diferenciado
+        &--disabled {
+            background: $color-gris-claro;
+            color: $color-gris;
+            cursor: not-allowed;
+        }
+    }
+
+    &__error {
+        display: block;
+        font-family: $fuente-sans;
+        font-size: 0.75rem;
+        color: $color-error;
+        margin-top: 6px;
+    }
+
+    &--error .campo__input {
+        border-color: $color-error;
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgba($color-error, 0.12);
+        }
+    }
+}
+
+.opciones-radio {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.opcion-radio {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+
+    input[type="radio"] {
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        min-width: 18px;
+        border: 1px solid $color-gris-claro;
+        border-radius: 50%;
+        transition: $transicion;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border-radius: 50%;
+            background: $color-dorado;
+            opacity: 0;
+            transition: $transicion;
+        }
+
+        &:checked {
+            border-color: $color-dorado;
+
+            &::after {
+                opacity: 1;
+            }
+        }
+
+        &:focus-visible {
+            box-shadow: 0 0 0 3px rgba($color-dorado, 0.2);
+        }
+    }
+
+    &__texto {
+        font-family: $fuente-sans;
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: $color-oscuro;
+        line-height: 1.5;
+    }
+}
+
+.opcion-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        min-width: 18px;
+        margin-top: 2px;
+        border: 1px solid $color-gris-claro;
+        border-radius: 0;
+        transition: $transicion;
+        position: relative;
+
+        &::after {
+            content: '✓';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #fff;
+            opacity: 0;
+            transition: $transicion;
+        }
+
+        &:checked {
+            background: $color-dorado;
+            border-color: $color-dorado;
+
+            &::after {
+                opacity: 1;
+            }
+        }
+
+        &:focus-visible {
+            box-shadow: 0 0 0 3px rgba($color-dorado, 0.2);
+        }
+    }
+
+    &__texto {
+        font-family: $fuente-sans;
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: $color-oscuro;
+        line-height: 1.6;
+
+        strong {
+            font-weight: 500;
+        }
+    }
+}
+
+.formulario__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 32px;
+    border-top: 1px solid $color-gris-claro;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.formulario__nota {
+    font-family: $fuente-sans;
+    font-size: 0.75rem;
+    color: $color-gris;
+}
+
+.btn-enviar {
+    padding: 16px 48px;
+    background: $color-oscuro;
+    color: $color-crema;
+    font-family: $fuente-sans;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: $transicion;
+
+    &:hover:not(:disabled) {
+        background: $color-dorado;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.error-envio {
+    background: color.adjust($color-error, $lightness: 48%);
+    border-left: 3px solid $color-error;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+
+    p {
+        font-family: $fuente-sans;
+        font-size: 0.85rem;
+        color: color.adjust($color-error, $lightness: -5%);
+        line-height: 1.5;
+    }
+}
+
+.confirmacion {
+    padding: 100px 0;
+    text-align: center;
+
+    &__icono {
+        font-size: 2rem;
+        color: $color-dorado;
+        margin-bottom: 32px;
+        display: block;
+    }
+
+    &__titulo {
+        font-family: $fuente-serif;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 300;
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    &__texto {
+        font-family: $fuente-sans;
+        font-size: 0.95rem;
+        font-weight: 300;
+        color: $color-gris;
+        line-height: 1.8;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+}
