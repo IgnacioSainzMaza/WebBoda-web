@@ -1,0 +1,404 @@
+// =====================================================================
+// VARIABLES (misma paleta que inicio.scss para coherencia visual)
+// =====================================================================
+$color-oscuro:      #1a1a18;
+$color-dorado:      #b89a6a;
+$color-dorado-claro:#d4b896;
+$color-crema:       #f5f0e8;
+$color-gris:        #6b6560;
+$color-gris-claro:  #e8e2d9;
+$color-error:       #c0392b;
+$color-exito:       #2d6a4f;
+
+$fuente-serif: 'Cormorant Garamond', 'Garamond', Georgia, serif;
+$fuente-sans:  'Jost', 'Gill Sans', 'Optima', sans-serif;
+
+$max-ancho:    700px;
+$transicion:   all 0.25s ease;
+
+@use 'sass:color';
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+// =====================================================================
+// BASE
+// El font-size base aquí actúa como multiplicador global.
+// Subimos de 16px implícito a 18px, lo que escala todo el sistema
+// tipográfico proporcionalmente sin tocar cada valor individualmente.
+// =====================================================================
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:host {
+  display: block;
+  background-color: $color-crema;
+  color: $color-oscuro;
+  font-family: $fuente-sans;
+  font-size: 18px; // ← tamaño base aumentado (antes era 16px implícito)
+  min-height: 100vh;
+}
+
+.container {
+  max-width: $max-ancho;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+// =====================================================================
+// CABECERA DE PÁGINA
+// =====================================================================
+.pagina-header {
+  background: $color-oscuro;
+  color: #fff;
+  text-align: center;
+  padding: 48px 0 40px;
+
+  &__volver {
+    display: inline-block;
+    font-family: $fuente-sans;
+    font-size: 0.85rem;   // antes 0.75rem → +13%
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    margin-bottom: 32px;
+    transition: $transicion;
+
+    &:hover { color: $color-dorado; }
+  }
+
+  &__pretitulo {
+    font-family: $fuente-sans;
+    font-size: 0.8rem;    // antes 0.7rem
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: $color-dorado;
+    margin-bottom: 12px;
+  }
+
+  &__titulo {
+    font-family: $fuente-serif;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);  // antes clamp(2rem, 6vw, 3.2rem)
+    font-weight: 300;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  &__fecha {
+    font-family: $fuente-sans;
+    font-size: 0.85rem;   // antes 0.75rem
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    color: rgba(255,255,255,0.45);
+  }
+}
+
+// =====================================================================
+// SECCIÓN DEL FORMULARIO
+// =====================================================================
+.formulario-seccion {
+  padding: 64px 0 80px;
+}
+
+// =====================================================================
+// FIELDSETS / GRUPOS DE CAMPOS
+// =====================================================================
+.grupo {
+  border: none;
+  padding: 0;
+  margin-bottom: 48px;
+
+  &__titulo {
+    font-family: $fuente-sans;
+    font-size: 0.8rem;    // antes 0.7rem
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: $color-dorado;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-gris-claro;
+    margin-bottom: 32px;
+    width: 100%;
+  }
+}
+
+.campo-fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// =====================================================================
+// CAMPO INDIVIDUAL
+// =====================================================================
+.campo {
+  margin-bottom: 24px;
+
+  &__label {
+    display: block;
+    font-family: $fuente-sans;
+    font-size: 0.9rem;    // antes 0.78rem
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: $color-oscuro;
+    margin-bottom: 8px;
+  }
+
+  &__descripcion {
+    font-family: $fuente-sans;
+    font-size: 0.9rem;    // antes 0.8rem
+    color: $color-gris;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    padding: 14px 18px;   // antes 12px 16px → inputs ligeramente más altos
+    background: #fff;
+    border: 1px solid $color-gris-claro;
+    border-radius: 0;
+    font-family: $fuente-sans;
+    font-size: 1rem;      // antes 0.9rem → texto del input más legible
+    font-weight: 300;
+    color: $color-oscuro;
+    transition: $transicion;
+    appearance: none;
+    outline: none;
+
+    &::placeholder {
+      color: color.adjust($color-gris, $lightness: 20%);
+    }
+
+    &:focus {
+      border-color: $color-dorado;
+      box-shadow: 0 0 0 3px rgba($color-dorado, 0.12);
+    }
+  }
+
+  &__error {
+    display: block;
+    font-family: $fuente-sans;
+    font-size: 0.85rem;   // antes 0.75rem
+    color: $color-error;
+    margin-top: 6px;
+  }
+
+  &--error {
+    .campo__input {
+      border-color: $color-error;
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($color-error, 0.12);
+      }
+    }
+  }
+}
+
+// =====================================================================
+// OPCIONES RADIO Y CHECKBOX
+// =====================================================================
+.opciones-radio {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;              // antes 12px → más aire entre opciones
+}
+
+.opcion-radio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+
+  input[type="radio"] {
+    appearance: none;
+    width: 20px;          // antes 18px
+    height: 20px;
+    min-width: 20px;
+    border: 1px solid $color-gris-claro;
+    border-radius: 50%;
+    transition: $transicion;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: $color-dorado;
+      opacity: 0;
+      transition: $transicion;
+    }
+
+    &:checked {
+      border-color: $color-dorado;
+      &::after { opacity: 1; }
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 3px rgba($color-dorado, 0.2);
+    }
+  }
+
+  &__texto {
+    font-family: $fuente-sans;
+    font-size: 1rem;      // antes 0.9rem
+    font-weight: 300;
+    color: $color-oscuro;
+    line-height: 1.5;
+  }
+}
+
+.opcion-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    appearance: none;
+    width: 20px;          // antes 18px
+    height: 20px;
+    min-width: 20px;
+    margin-top: 2px;
+    border: 1px solid $color-gris-claro;
+    border-radius: 0;
+    transition: $transicion;
+    position: relative;
+
+    &::after {
+      content: '✓';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;    // antes 12px
+      color: #fff;
+      opacity: 0;
+      transition: $transicion;
+    }
+
+    &:checked {
+      background: $color-dorado;
+      border-color: $color-dorado;
+      &::after { opacity: 1; }
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 3px rgba($color-dorado, 0.2);
+    }
+  }
+
+  &__texto {
+    font-family: $fuente-sans;
+    font-size: 1rem;      // antes 0.9rem
+    font-weight: 300;
+    color: $color-oscuro;
+    line-height: 1.6;
+
+    strong { font-weight: 500; }
+  }
+}
+
+// =====================================================================
+// PIE DEL FORMULARIO Y BOTÓN DE ENVÍO
+// =====================================================================
+.formulario__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 32px;
+  border-top: 1px solid $color-gris-claro;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.formulario__nota {
+  font-family: $fuente-sans;
+  font-size: 0.85rem;     // antes 0.75rem
+  color: $color-gris;
+}
+
+.btn-enviar {
+  padding: 18px 52px;     // antes 16px 48px → botón ligeramente más generoso
+  background: $color-oscuro;
+  color: $color-crema;
+  font-family: $fuente-sans;
+  font-size: 0.85rem;     // antes 0.75rem
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: $transicion;
+
+  &:hover:not(:disabled) {
+    background: $color-dorado;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// =====================================================================
+// ERROR DE ENVÍO
+// =====================================================================
+.error-envio {
+  background: color.adjust($color-error, $lightness: 48%);
+  border-left: 3px solid $color-error;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+
+  p {
+    font-family: $fuente-sans;
+    font-size: 0.95rem;   // antes 0.85rem
+    color: color.adjust($color-error, $lightness: -5%);
+    line-height: 1.5;
+  }
+}
+
+// =====================================================================
+// MENSAJE DE CONFIRMACIÓN (estado éxito)
+// =====================================================================
+.confirmacion {
+  padding: 100px 0;
+  text-align: center;
+
+  &__icono {
+    font-size: 2.2rem;    // antes 2rem
+    color: $color-dorado;
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  &__titulo {
+    font-family: $fuente-serif;
+    font-size: clamp(2.4rem, 5vw, 3.4rem);  // antes clamp(2rem, 5vw, 3rem)
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+
+  &__texto {
+    font-family: $fuente-sans;
+    font-size: 1.05rem;   // antes 0.95rem
+    font-weight: 300;
+    color: $color-gris;
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}

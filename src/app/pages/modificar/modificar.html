@@ -1,0 +1,222 @@
+<!-- =====================================================================
+     CABECERA DE PÁGINA
+     ===================================================================== -->
+<section class="pagina-header">
+  <div class="container">
+    <a class="pagina-header__volver" routerLink="/">← Volver al inicio</a>
+    <p class="pagina-header__pretitulo">Modificar confirmación</p>
+    <h1 class="pagina-header__titulo">Almudena & Ignacio</h1>
+    <p class="pagina-header__fecha">18 · VII · 2026</p>
+  </div>
+</section>
+
+<!-- =====================================================================
+     ESTADO: CARGANDO
+     ===================================================================== -->
+@if (cargando()) {
+  <section class="estado-carga">
+    <div class="container">
+      <div class="estado-carga__spinner"></div>
+      <p class="estado-carga__texto">Cargando tus datos...</p>
+    </div>
+  </section>
+}
+
+<!-- =====================================================================
+     ESTADO: ERROR DE CARGA
+     ===================================================================== -->
+@if (!cargando() && errorCarga()) {
+  <section class="estado-error">
+    <div class="container">
+      <p class="estado-error__icono">✕</p>
+      <h2 class="estado-error__titulo">Enlace no válido</h2>
+      <p class="estado-error__texto">{{ errorCarga() }}</p>
+      <a routerLink="/" class="btn-secundario">Volver al inicio</a>
+    </div>
+  </section>
+}
+
+<!-- =====================================================================
+     ESTADO: ENVIADO CON ÉXITO
+     ===================================================================== -->
+@if (enviado()) {
+  <section class="confirmacion">
+    <div class="container">
+      <div class="confirmacion__icono">✦</div>
+      <h2 class="confirmacion__titulo">¡Cambios guardados!</h2>
+      <p class="confirmacion__texto">
+        Hemos actualizado tu confirmación correctamente. En breve
+        recibirás un email con el resumen de tus nuevas respuestas.
+      </p>
+    </div>
+  </section>
+}
+
+<!-- =====================================================================
+     FORMULARIO DE MODIFICACIÓN
+     Solo visible cuando los datos han cargado y no se ha enviado aún.
+     ===================================================================== -->
+@if (!cargando() && !errorCarga() && !enviado()) {
+  <section class="formulario-seccion">
+    <div class="container">
+
+      <p class="formulario-aviso">
+        Puedes modificar cualquier dato excepto el email,
+        que está vinculado a tu confirmación original.
+      </p>
+
+      <form [formGroup]="formulario" (ngSubmit)="onSubmit()" novalidate>
+
+        <!-- ── DATOS PERSONALES ─────────────────────────────────────── -->
+        <fieldset class="grupo">
+          <legend class="grupo__titulo">Datos personales</legend>
+
+          <div class="campo-fila">
+
+            <div class="campo" [class.campo--error]="campoInvalido('nombre')">
+              <label class="campo__label" for="nombre">Nombre *</label>
+              <input
+                class="campo__input"
+                id="nombre"
+                type="text"
+                formControlName="nombre"
+                autocomplete="given-name"
+              />
+              @if (campoInvalido('nombre')) {
+                <span class="campo__error">El nombre es obligatorio.</span>
+              }
+            </div>
+
+            <div class="campo" [class.campo--error]="campoInvalido('apellidos')">
+              <label class="campo__label" for="apellidos">Apellidos *</label>
+              <input
+                class="campo__input"
+                id="apellidos"
+                type="text"
+                formControlName="apellidos"
+                autocomplete="family-name"
+              />
+              @if (campoInvalido('apellidos')) {
+                <span class="campo__error">Los apellidos son obligatorios.</span>
+              }
+            </div>
+
+          </div>
+
+          <!-- Email deshabilitado: visible pero no editable -->
+          <div class="campo">
+            <label class="campo__label" for="email">
+              Email
+              <span class="campo__badge">No modificable</span>
+            </label>
+            <input
+              class="campo__input campo__input--disabled"
+              id="email"
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+            />
+          </div>
+
+        </fieldset>
+
+        <!-- ── ASISTENCIA ────────────────────────────────────────────── -->
+        <fieldset class="grupo">
+          <legend class="grupo__titulo">Asistencia</legend>
+
+          <div class="campo" [class.campo--error]="campoInvalido('asistencia')">
+            <p class="campo__label">¿Confirmas tu asistencia? *</p>
+
+            <div class="opciones-radio">
+              <label class="opcion-radio">
+                <input type="radio" formControlName="asistencia" [value]="true" />
+                <span class="opcion-radio__texto">Sí, allí estaré 🎉</span>
+              </label>
+              <label class="opcion-radio">
+                <input type="radio" formControlName="asistencia" [value]="false" />
+                <span class="opcion-radio__texto">No podré asistir</span>
+              </label>
+            </div>
+
+            @if (campoInvalido('asistencia')) {
+              <span class="campo__error">Por favor, indica si asistirás.</span>
+            }
+          </div>
+        </fieldset>
+
+        <!-- ── DETALLES (solo si asiste) ─────────────────────────────── -->
+        @if (f['asistencia'].value === true) {
+          <fieldset class="grupo">
+            <legend class="grupo__titulo">Detalles de tu asistencia</legend>
+
+            <div class="campo">
+              <label class="campo__label" for="condicionesAlimentarias">
+                Condiciones alimentarias
+              </label>
+              <p class="campo__descripcion">
+                ¿Tienes alguna alergia, intolerancia o preferencia alimentaria?
+                Déjalo en blanco si no tienes ninguna.
+              </p>
+              <input
+                class="campo__input"
+                id="condicionesAlimentarias"
+                type="text"
+                formControlName="condicionesAlimentarias"
+                placeholder="Ej: alergia a los frutos secos, vegetariano..."
+              />
+            </div>
+
+            <div class="campo campo--checkbox">
+              <label class="opcion-checkbox">
+                <input type="checkbox" formControlName="autobusIda" />
+                <span class="opcion-checkbox__texto">
+                  Quiero coger el <strong>autobús de ida</strong>
+                  (desde las inmediaciones de la Real Colegiata de San Isidro
+                  hasta la Finca Astilbe)
+                </span>
+              </label>
+            </div>
+
+            <div class="campo">
+              <p class="campo__label">Autobús de vuelta</p>
+              <p class="campo__descripcion">
+                Al finalizar la celebración habrá dos servicios de vuelta.
+              </p>
+              <div class="opciones-radio">
+                <label class="opcion-radio">
+                  <input type="radio" formControlName="autobusVuelta" [value]="TipoAutobusVuelta.NoCogeAutobus" />
+                  <span class="opcion-radio__texto">No cojo el autobús de vuelta</span>
+                </label>
+                <label class="opcion-radio">
+                  <input type="radio" formControlName="autobusVuelta" [value]="TipoAutobusVuelta.PrimerServicio" />
+                  <span class="opcion-radio__texto">Primer servicio → Zona de Ventas</span>
+                </label>
+                <label class="opcion-radio">
+                  <input type="radio" formControlName="autobusVuelta" [value]="TipoAutobusVuelta.SegundoServicio" />
+                  <span class="opcion-radio__texto">Segundo servicio → Zona de Pirámides</span>
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        }
+
+        <!-- ── ERROR DE ENVÍO ────────────────────────────────────────── -->
+        @if (errorEnvio()) {
+          <div class="error-envio">
+            <p>{{ errorEnvio() }}</p>
+          </div>
+        }
+
+        <!-- ── BOTÓN DE ENVÍO ────────────────────────────────────────── -->
+        <div class="formulario__footer">
+          <p class="formulario__nota">* Campos obligatorios</p>
+          <button type="submit" class="btn-enviar" [disabled]="enviando()">
+            @if (enviando()) { Guardando... } @else { Guardar cambios }
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+}

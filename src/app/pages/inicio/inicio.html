@@ -1,0 +1,141 @@
+<!-- =====================================================================
+     HERO: Foto de portada a pantalla completa con overlay de texto
+     ===================================================================== -->
+<section class="hero">
+  <div class="hero__overlay"></div>
+
+  <!-- Bloque de nombres: lo posicionamos más abajo para dejar libre el sagrario -->
+  <div class="hero__nombres">
+    <h1 class="hero__title">
+      <span class="hero__name">Almudena</span>
+      <span class="hero__ampersand">&</span>
+      <span class="hero__name">Ignacio</span>
+    </h1>
+  </div>
+
+  <!-- Bloque de fecha y botón: anclado en la parte inferior del hero -->
+  <div class="hero__footer">
+    <p class="hero__date">18 · JULIO · 2026</p>
+    <a routerLink="/formulario" class="hero__cta">
+      Confirmar asistencia
+    </a>
+  </div>
+
+  <div class="hero__scroll-indicator">
+    <span class="hero__scroll-chevron"></span>
+  </div>
+</section>
+
+<!-- =====================================================================
+     MENSAJE DE BIENVENIDA
+     ===================================================================== -->
+<section class="bienvenida">
+  <div class="container">
+    <div class="divider"></div>
+    <p class="bienvenida__texto">
+      Con mucha alegría queremos compartir con vosotros uno de los días
+      más especiales de nuestras vidas. Será un honor teneros cerca
+      mientras decimos «sí, quiero».
+    </p>
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     DETALLES: Ceremonia y celebración
+     ===================================================================== -->
+<section class="detalles">
+  <div class="container detalles__grid">
+
+    <!-- Ceremonia -->
+    <article class="detalles__card">
+      <span class="detalles__icon">⛪</span>
+      <h2 class="detalles__titulo">Ceremonia</h2>
+      <p class="detalles__lugar">Real Colegiata de San Isidro</p>
+      <p class="detalles__hora">12:30 h</p>
+      <p class="detalles__descripcion">
+        Calle de Toledo, 37, 28005, Madrid
+      </p>
+    </article>
+
+    <!-- Separador vertical decorativo (solo en escritorio) -->
+    <div class="detalles__separador"></div>
+
+    <!-- Celebración -->
+    <article class="detalles__card">
+      <span class="detalles__icon">🌿</span>
+      <h2 class="detalles__titulo">Celebración</h2>
+      <p class="detalles__lugar">Finca Astilbe</p>
+      <p class="detalles__hora">Desde las 14:30 — 15:00 h</p>
+      <p class="detalles__descripcion">
+        Carretera de Fuencarral, km 1, 9 28049, Madrid
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<!-- =====================================================================
+     AUTOBUSES
+     ===================================================================== -->
+<section class="autobuses">
+  <div class="container">
+    <div class="divider"></div>
+    <h2 class="autobuses__titulo">Autobuses</h2>
+    <p class="autobuses__intro">
+      Para que podáis disfrutar sin preocupaciones, hemos organizado
+      un servicio de autobuses de ida y vuelta.
+    </p>
+
+    <div class="autobuses__grid">
+
+      <div class="autobuses__item">
+        <h3 class="autobuses__subtitulo">Ida</h3>
+        <p>
+          El autobús de ida saldrá desde las inmediaciones de la
+          <strong>Real Colegiata de San Isidro</strong> para llevaros
+          directamente a la Finca Astilbe. Todavía no sabemos exactamente el punto de partida, pero os informaremos con tiempo para que podáis organizaros.
+        </p>
+      </div>
+
+      <div class="autobuses__item">
+        <h3 class="autobuses__subtitulo">Vuelta</h3>
+        <p>
+          Al finalizar la celebración, dos autobuses estarán disponibles para llevaros de vuelta a Madrid, con dos destinos:
+        </p>
+        <ul class="autobuses__lista">
+          <li>
+            Calle Alcalá, junto a la Plaza de Toros de Las Ventas
+          </li>
+          <li>
+            Glorieta de Ortega y Munilla (Pirámides)
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     CTA FINAL: Botón para ir al formulario
+     ===================================================================== -->
+<section class="cta-final">
+  <div class="container">
+    <h2 class="cta-final__titulo">¿Nos acompañáis?</h2>
+    <p class="cta-final__subtitulo">
+      Confirmad vuestra asistencia antes del <strong>30 de junio de 2026</strong>.
+    </p>
+    <a routerLink="/formulario" class="btn-primario">
+      Confirmar asistencia
+    </a>
+  </div>
+</section>
+
+<!-- =====================================================================
+     FOOTER
+     ===================================================================== -->
+<footer class="footer">
+  <p>Almudena & Ignacio · 18 de julio de 2026</p>
+</footer>

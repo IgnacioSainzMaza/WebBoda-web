@@ -1,0 +1,265 @@
+<!-- =====================================================================
+     CABECERA DE PÁGINA
+     ===================================================================== -->
+<section class="pagina-header">
+  <div class="container">
+    <a class="pagina-header__volver" routerLink="/">← Volver al inicio</a>
+    <p class="pagina-header__pretitulo">Confirmación de asistencia</p>
+    <h1 class="pagina-header__titulo">Almudena & Ignacio</h1>
+    <p class="pagina-header__fecha">18 · JULIO · 2026</p>
+  </div>
+</section>
+
+<!-- =====================================================================
+     MENSAJE DE ÉXITO
+     Se muestra cuando enviado() es true, ocultando el formulario.
+     @if es la sintaxis moderna de Angular 17+ para condicionales en el HTML.
+     ===================================================================== -->
+@if (enviado()) {
+  <section class="confirmacion">
+    <div class="container">
+      <div class="confirmacion__icono">✦</div>
+      <h2 class="confirmacion__titulo">¡Gracias por confirmar!</h2>
+      <p class="confirmacion__texto">
+        Hemos recibido tu confirmación y en breve recibirás un email
+        con el resumen de tus respuestas. Si necesitas modificar algo,
+        encontrarás un enlace en ese email.
+      </p>
+    </div>
+  </section>
+}
+
+<!-- =====================================================================
+     FORMULARIO
+     Solo se muestra si todavía no se ha enviado.
+     [formGroup] conecta el formulario HTML con el FormGroup del TypeScript.
+     (ngSubmit) llama a onSubmit() cuando el usuario pulsa el botón de enviar.
+     ===================================================================== -->
+@if (!enviado()) {
+  <section class="formulario-seccion">
+    <div class="container">
+
+      <form [formGroup]="formulario" (ngSubmit)="onSubmit()" novalidate>
+
+        <!-- ── DATOS PERSONALES ─────────────────────────────────────── -->
+        <fieldset class="grupo">
+          <legend class="grupo__titulo">Datos personales</legend>
+
+          <div class="campo-fila">
+
+            <div class="campo" [class.campo--error]="campoInvalido('nombre')">
+              <label class="campo__label" for="nombre">Nombre *</label>
+              <input
+                class="campo__input"
+                id="nombre"
+                type="text"
+                formControlName="nombre"
+                placeholder="Tu nombre"
+                autocomplete="given-name"
+              />
+              @if (campoInvalido('nombre')) {
+                <span class="campo__error">El nombre es obligatorio.</span>
+              }
+            </div>
+
+            <div class="campo" [class.campo--error]="campoInvalido('apellidos')">
+              <label class="campo__label" for="apellidos">Apellidos *</label>
+              <input
+                class="campo__input"
+                id="apellidos"
+                type="text"
+                formControlName="apellidos"
+                placeholder="Tus apellidos"
+                autocomplete="family-name"
+              />
+              @if (campoInvalido('apellidos')) {
+                <span class="campo__error">Los apellidos son obligatorios.</span>
+              }
+            </div>
+
+          </div>
+
+          <div class="campo" [class.campo--error]="campoInvalido('email')">
+            <label class="campo__label" for="email">Email *</label>
+            <input
+              class="campo__input"
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="tu@email.com"
+              autocomplete="email"
+            />
+            @if (campoInvalido('email')) {
+              @if (f['email'].errors?.['required']) {
+                <span class="campo__error">El email es obligatorio.</span>
+              } @else {
+                <span class="campo__error">El formato del email no es válido.</span>
+              }
+            }
+          </div>
+
+        </fieldset>
+
+        <!-- ── ASISTENCIA ────────────────────────────────────────────── -->
+        <fieldset class="grupo">
+          <legend class="grupo__titulo">Asistencia</legend>
+
+          <div class="campo" [class.campo--error]="campoInvalido('asistencia')">
+            <p class="campo__label">¿Confirmas tu asistencia? *</p>
+
+            <div class="opciones-radio">
+              <label class="opcion-radio">
+                <input
+                  type="radio"
+                  formControlName="asistencia"
+                  [value]="true"
+                />
+                <span class="opcion-radio__texto">Sí, allí estaré 🎉</span>
+              </label>
+
+              <label class="opcion-radio">
+                <input
+                  type="radio"
+                  formControlName="asistencia"
+                  [value]="false"
+                />
+                <span class="opcion-radio__texto">No podré asistir</span>
+              </label>
+            </div>
+
+            @if (campoInvalido('asistencia')) {
+              <span class="campo__error">Por favor, indica si asistirás.</span>
+            }
+          </div>
+
+        </fieldset>
+
+        <!-- ── DETALLES (solo si asiste) ─────────────────────────────── -->
+        <!-- Usamos f['asistencia'].value para mostrar estos campos solo cuando
+             el invitado ha confirmado que sí asiste. Si no asiste, no tiene
+             sentido preguntarle por el autobús o las condiciones alimentarias. -->
+        @if (f['asistencia'].value === true) {
+
+          <fieldset class="grupo">
+            <legend class="grupo__titulo">Detalles de tu asistencia</legend>
+
+            <!-- Condiciones alimentarias -->
+            <div class="campo">
+              <label class="campo__label" for="condicionesAlimentarias">
+                Condiciones alimentarias
+              </label>
+              <p class="campo__descripcion">
+                ¿Tienes alguna alergia, intolerancia o preferencia alimentaria
+                que debamos tener en cuenta? Déjalo en blanco si no tienes ninguna.
+              </p>
+              <input
+                class="campo__input"
+                id="condicionesAlimentarias"
+                type="text"
+                formControlName="condicionesAlimentarias"
+                placeholder="Ej: alergia a los frutos secos, vegetariano..."
+              />
+            </div>
+
+            <!-- Autobús de ida -->
+            <div class="campo campo--checkbox">
+              <p class="campo__label">Autobús de ida</p>
+              <div class="opciones-radio">
+                <label class="opcion-radio">
+                  <input
+                    type="radio"
+                    formControlName="autobusVuelta"
+                    [value]="TipoAutobusVuelta.NoCogeAutobus"
+                  />
+                  <span class="opcion-radio__texto">Quiero coger el autobús de ida</span>
+                </label>
+
+                <label class="opcion-radio">
+                  <input
+                    type="radio"
+                    formControlName="autobusVuelta"
+                    [value]="TipoAutobusVuelta.PrimerServicio"
+                  />
+                  <span class="opcion-radio__texto">
+                    No necesito autobús, iré por mi cuenta
+                  </span>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- Autobús de vuelta -->
+            <div class="campo">
+              <p class="campo__label">Autobús de vuelta</p>
+              <p class="campo__descripcion">
+                Al finalizar la celebración habrá dos servicios de vuelta.
+                Selecciona el que más te convenga, o ninguno si prefieres
+                volver por tu cuenta.
+              </p>
+
+              <div class="opciones-radio">
+                <label class="opcion-radio">
+                  <input
+                    type="radio"
+                    formControlName="autobusVuelta"
+                    [value]="TipoAutobusVuelta.NoCogeAutobus"
+                  />
+                  <span class="opcion-radio__texto">No cojo el autobús de vuelta</span>
+                </label>
+
+                <label class="opcion-radio">
+                  <input
+                    type="radio"
+                    formControlName="autobusVuelta"
+                    [value]="TipoAutobusVuelta.PrimerServicio"
+                  />
+                  <span class="opcion-radio__texto">
+                    Primer servicio → Zona de Ventas
+                  </span>
+                </label>
+
+                <label class="opcion-radio">
+                  <input
+                    type="radio"
+                    formControlName="autobusVuelta"
+                    [value]="TipoAutobusVuelta.SegundoServicio"
+                  />
+                  <span class="opcion-radio__texto">
+                    Segundo servicio → Zona de Pirámides
+                  </span>
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+
+        }
+
+        <!-- ── ERROR DE ENVÍO ────────────────────────────────────────── -->
+        @if (errorEnvio()) {
+          <div class="error-envio">
+            <p>{{ errorEnvio() }}</p>
+          </div>
+        }
+
+        <!-- ── BOTÓN DE ENVÍO ────────────────────────────────────────── -->
+        <div class="formulario__footer">
+          <p class="formulario__nota">* Campos obligatorios</p>
+          <button
+            type="submit"
+            class="btn-enviar"
+            [disabled]="enviando()"
+          >
+            @if (enviando()) {
+              Enviando...
+            } @else {
+              Confirmar asistencia
+            }
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </section>
+}
