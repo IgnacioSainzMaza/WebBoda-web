@@ -98,10 +98,7 @@ $transicion:        all 0.35s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  // Cambiamos la estrategia: distribuimos el espacio entre los tres
-  // bloques (espaciador superior, nombres, footer) de forma flexible.
-  // Así el contenido NUNCA puede salirse del viewport.
-  justify-content: space-between;
+  justify-content: center; // Nombres centrados verticalmente
   overflow: hidden;
 
   background-image: url('/WebBoda-web/seminario3.png');
@@ -119,45 +116,34 @@ $transicion:        all 0.35s ease;
     );
   }
 
-  // Espaciador flexible que empuja los nombres hacia el centro/abajo.
-  // Es invisible pero ocupa el tercio superior del hero.
-  &::before {
-    content: '';
-    display: block;
-    flex: 1;         // Ocupa todo el espacio sobrante por encima de los nombres
-    min-height: 80px; // Garantiza un mínimo de espacio superior
-  }
-
   &__nombres {
     position: relative;
     z-index: 1;
     text-align: center;
     width: 100%;
     padding: 0 24px;
-    // Sin margin-bottom fijo: el espacio entre nombres y footer
-    // lo gestiona el gap del flex container
-    margin-bottom: 0;
+    // Desplazamos ligeramente hacia arriba el bloque de nombres
+    // para que quede en el tercio superior-centro de la pantalla,
+    // lejos del footer que está anclado abajo.
+    transform: translateY(-15%);
     animation: fadeInUp 1.2s ease both;
   }
 
+  // El footer (fecha + botón) se posiciona de forma ABSOLUTA
+  // en la parte inferior. Así es completamente independiente
+  // de los nombres y nunca se pueden solapar.
   &__footer {
-    position: relative;
+    position: absolute;
+    bottom: 80px; // Espacio desde el borde inferior
+    left: 0;
+    right: 0;
     z-index: 1;
     text-align: center;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 24px;
-    // Padding inferior fijo pero razonable: solo necesitamos dejar
-    // espacio para el chevron de scroll (bottom: 36px + su altura ~22px)
-    // Un padding de 80px es más que suficiente en cualquier dispositivo.
-    padding: 0 24px 80px;
-
-    // En escritorio podemos ser un poco más generosos
-    @media (min-width: 1024px) {
-      padding-bottom: 100px;
-    }
+    padding: 0 24px;
   }
 
   &__pretitle {
