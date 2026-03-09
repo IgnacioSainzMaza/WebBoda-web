@@ -95,15 +95,10 @@ $transicion:        all 0.35s ease;
   position: relative;
   height: 100svh;
   min-height: 600px;
-  // Convertimos el hero en un contenedor flexbox vertical.
-  // Esto nos permite distribuir los tres bloques (espacio vacío superior,
-  // nombres, footer con fecha y botón) a lo largo del eje vertical
-  // sin recurrir a porcentajes ni posicionamiento absoluto que dan
-  // problemas de centrado en Angular.
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end; // Todo se ancla desde abajo hacia arriba
+  justify-content: flex-end;
   overflow: hidden;
 
   background-image: url('/WebBoda-web/seminario3.png');
@@ -121,34 +116,60 @@ $transicion:        all 0.35s ease;
     );
   }
 
-  // El bloque de nombres se posiciona usando margin-bottom para
-  // separarlo del __footer que viene justo después en el DOM.
-  // Al ser un flex child, se centra automáticamente gracias al
-  // align-items: center del padre. Sin left/transform necesarios.
   &__nombres {
-    position: relative; // Necesario para que z-index funcione sobre el overlay
+    position: relative;
     z-index: 1;
     text-align: center;
     width: 100%;
     padding: 0 24px;
-    margin-bottom: 180px; // Separación entre nombres y el footer (fecha + botón)
     animation: fadeInUp 1.2s ease both;
+
+    // Escritorio grande (>= 1024px): valor original
+    margin-bottom: 180px;
+
+    // Tablet landscape (768px – 1023px)
+    @media (max-width: 1023px) {
+      margin-bottom: 120px;
+    }
+
+    // Tablet portrait (600px – 767px)
+    @media (max-width: 767px) {
+      margin-bottom: 80px;
+    }
+
+    // Móvil (< 600px)
+    @media (max-width: 599px) {
+      margin-bottom: 60px;
+    }
   }
 
-  // El footer (fecha + botón) se ancla en la parte inferior del hero,
-  // justo encima del indicador de scroll. Usamos padding-bottom en lugar
-  // de bottom absoluto para que el espacio sea consistente en todos los
-  // tamaños de pantalla.
   &__footer {
     position: relative;
     z-index: 1;
     text-align: center;
     width: 100%;
-    padding: 0 24px 220px; // El padding-bottom de 96px deja espacio para el chevron
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px; // Espacio entre la fecha y el botón
+    gap: 24px;
+
+    // Escritorio grande (>= 1024px): valor original
+    padding: 0 24px 220px;
+
+    // Tablet landscape (768px – 1023px)
+    @media (max-width: 1023px) {
+      padding: 0 24px 140px;
+    }
+
+    // Tablet portrait (600px – 767px)
+    @media (max-width: 767px) {
+      padding: 0 24px 100px;
+    }
+
+    // Móvil (< 600px)
+    @media (max-width: 599px) {
+      padding: 0 24px 80px;
+    }
   }
 
   &__pretitle {
@@ -219,8 +240,6 @@ $transicion:        all 0.35s ease;
     }
   }
 
-  // El indicador de scroll sigue siendo absoluto porque no forma parte
-  // del flujo de contenido: flota sobre el borde inferior del hero.
   &__scroll-indicator {
     position: absolute;
     bottom: 36px;
