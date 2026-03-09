@@ -98,7 +98,7 @@ $transicion:        all 0.35s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; // Nombres centrados verticalmente
+  justify-content: center;
   overflow: hidden;
 
   background-image: url('/WebBoda-web/seminario3.png');
@@ -116,35 +116,43 @@ $transicion:        all 0.35s ease;
     );
   }
 
+  // Espaciador superior flexible: empuja el contenido
+  // hacia abajo. flex: 2 significa que ocupa el doble
+  // que el espaciador inferior, dejando los nombres
+  // en el tercio superior-central de la pantalla.
+  &__spacer-top {
+    flex: 2;
+  }
+
   &__nombres {
     position: relative;
     z-index: 1;
     text-align: center;
     width: 100%;
     padding: 0 24px;
-    // Desplazamos ligeramente hacia arriba el bloque de nombres
-    // para que quede en el tercio superior-centro de la pantalla,
-    // lejos del footer que está anclado abajo.
-    transform: translateY(-15%);
     animation: fadeInUp 1.2s ease both;
   }
 
-  // El footer (fecha + botón) se posiciona de forma ABSOLUTA
-  // en la parte inferior. Así es completamente independiente
-  // de los nombres y nunca se pueden solapar.
-  &__footer {
-    position: absolute;
-    bottom: 80px; // Espacio desde el borde inferior
-    left: 0;
-    right: 0;
-    z-index: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    padding: 0 24px;
-  }
+  // Espaciador inferior: separa nombres del footer.
+  // flex: 1 hace que sea la mitad del espaciador superior,
+  // lo que visualmente centra-sube los nombres.
+&__spacer-bottom {
+  flex: 1;
+  min-height: 32px;
+  max-height: 120px; // Era 80px, subimos a 120px
+}
+
+&__footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 0 24px 90px;
+}
 
   &__pretitle {
     font-family: $fuente-sans;
