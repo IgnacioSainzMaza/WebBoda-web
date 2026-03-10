@@ -95,10 +95,6 @@ $transicion:        all 0.35s ease;
   position: relative;
   height: 100svh;
   min-height: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 
   background-image: url('/WebBoda-web/seminario3.png');
@@ -116,21 +112,11 @@ $transicion:        all 0.35s ease;
     );
   }
 
-// Espaciador superior: bajamos de flex:2 a flex:1
-// para que el contenido suba hacia el centro-superior
-&__spacer-top {
-  flex: 1;
-}
-
-// Espaciador inferior: lo eliminamos o dejamos mínimo
-&__spacer-bottom {
-  flex: 0;
-  min-height: 24px;
-  max-height: 48px;
-}
-
   &__nombres {
-    position: relative;
+    position: absolute;
+    top: 32dvh;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
     text-align: center;
     width: 100%;
@@ -138,26 +124,19 @@ $transicion:        all 0.35s ease;
     animation: fadeInUp 1.2s ease both;
   }
 
-//   // Espaciador inferior: separa nombres del footer.
-//   // flex: 1 hace que sea la mitad del espaciador superior,
-//   // lo que visualmente centra-sube los nombres.
-// &__spacer-bottom {
-//   flex: 1;
-//   min-height: 32px;
-//   max-height: 120px; // Era 80px, subimos a 120px
-// }
-
-&__footer {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  padding: 0 24px 90px;
-}
+  &__footer {
+    position: absolute;
+    bottom: 10dvh;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 0 24px;
+  }
 
   &__pretitle {
     font-family: $fuente-sans;
@@ -171,24 +150,29 @@ $transicion:        all 0.35s ease;
   }
 
   &__title {
-  font-family: $fuente-serif;
-  font-size: clamp(3.5rem, 10vw, 7rem);
-  font-weight: 300;
-  font-style: italic;
-  color: #fdf6ed;
-  line-height: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  text-shadow:
-    0 2px 20px rgba(0, 0, 0, 0.6),
-    0 1px 4px rgba(0, 0, 0, 0.8);
+    font-family: $fuente-serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #fdf6ed;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    text-shadow:
+      0 2px 20px rgba(0, 0, 0, 0.6),
+      0 1px 4px rgba(0, 0, 0, 0.8);
 
-  // Tablet: nombres más pequeños para que no dominen tanto
-  @media (max-width: 1100px) and (min-width: 600px) {
-    font-size: clamp(2.5rem, 7vw, 4.5rem);
-  }
+    // Tablet landscape: reducir tamaño para que no dominen
+    @media (max-width: 1100px) and (min-width: 600px) {
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+    }
+
+    // Móvil portrait: tamaño contenido
+    @media (max-width: 599px) {
+      font-size: clamp(2.8rem, 13vw, 4rem);
+    }
   }
 
   &__name {
@@ -234,7 +218,7 @@ $transicion:        all 0.35s ease;
 
   &__scroll-indicator {
     position: absolute;
-    bottom: 36px;
+    bottom: 3dvh;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -253,7 +237,6 @@ $transicion:        all 0.35s ease;
     transform: rotate(45deg);
   }
 }
-
 // =====================================================================
 // BIENVENIDA
 // =====================================================================
