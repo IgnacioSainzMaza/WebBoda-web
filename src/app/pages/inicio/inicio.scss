@@ -111,18 +111,19 @@ $transicion:        all 0.35s ease;
       rgba(0, 0, 0, 0.40) 100%
     );
   }
-
-  &__nombres {
-    position: absolute;
-    top: 32dvh;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    text-align: center;
-    width: 100%;
-    padding: 0 24px;
-    animation: fadeInUp 1.2s ease both;
-  }
+  
+&__nombres {
+  position: absolute;
+  top: 32dvh;
+  left: 0;        // En lugar de left: 50%
+  right: 0;       // Ocupa todo el ancho
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+  padding: 0 24px;
+  // Eliminamos el transform: translateX(-50%) que causaba el desplazamiento
+  animation: fadeInUp 1.2s ease both;
+}
 
   &__footer {
     position: absolute;
