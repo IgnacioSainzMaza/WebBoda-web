@@ -111,7 +111,7 @@ $transicion:        all 0.35s ease;
       rgba(0, 0, 0, 0.40) 100%
     );
   }
-  
+
 &__nombres {
   position: absolute;
   top: 32dvh;
@@ -150,31 +150,26 @@ $transicion:        all 0.35s ease;
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
   }
 
-  &__title {
-    font-family: $fuente-serif;
-    font-size: clamp(3.5rem, 10vw, 7rem);
-    font-weight: 300;
-    font-style: italic;
-    color: #fdf6ed;
-    line-height: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    text-shadow:
-      0 2px 20px rgba(0, 0, 0, 0.6),
-      0 1px 4px rgba(0, 0, 0, 0.8);
+&__title {
+  font-family: $fuente-serif;
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #fdf6ed;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  text-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.6),
+    0 1px 4px rgba(0, 0, 0, 0.8);
 
-    // Tablet landscape: reducir tamaño para que no dominen
-    @media (max-width: 1100px) and (min-width: 600px) {
-      font-size: clamp(2.5rem, 7vw, 4.5rem);
-    }
-
-    // Móvil portrait: tamaño contenido
-    @media (max-width: 599px) {
-      font-size: clamp(2.8rem, 13vw, 4rem);
-    }
+  // Tablet landscape (600px – 1199px): reducir tamaño
+  @media (min-width: 600px) and (max-width: 1199px) {
+    font-size: clamp(2rem, 6vw, 3.5rem);
   }
+}
 
   &__name {
     display: block;
