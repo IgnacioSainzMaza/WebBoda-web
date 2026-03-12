@@ -57,36 +57,12 @@ $transicion:        all 0.35s ease;
 // de boda elegante.
 // =====================================================================
 .divider {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  height: 1px;
+  background: $color-dorado;
+  opacity: 0.6;
   margin: 48px auto;
   max-width: 300px;
-
-  &::before,
-  &::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: $color-dorado;
-    opacity: 0.6;
-  }
-
-  &::after {
-    content: '◆';
-    flex: none;
-    font-size: 10px;
-    color: $color-dorado;
-    opacity: 0.8;
-  }
-
-  // Sobreescribimos el ::after para que sea solo la línea
-  // y usamos un pseudoelemento diferente para el rombo
-  &::before { content: ''; }
 }
-
-// Versión más simple del divider: solo la línea central con el rombo
-.divider::after { content: '◆'; }
 
 // =====================================================================
 // HERO: Sección de portada a pantalla completa
@@ -251,7 +227,7 @@ $transicion:        all 0.35s ease;
     font-style: italic;
     line-height: 1.8;
     color: $color-gris;
-    max-width: 640px;
+    max-width: 1000px;
     margin: 0 auto;
   }
 }
@@ -272,7 +248,41 @@ $transicion:        all 0.35s ease;
 
     @media (max-width: 640px) {
       grid-template-columns: 1fr;
-    }
+
+.detalles__waze {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  color: #b89a6a !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+
+  .material-icons {
+    font-size: 16px !important;
+    line-height: 1 !important;
+  }
+}
+
+  &__pin-icon {
+    font-size: 16px;
+    line-height: 1;
+    vertical-align: middle; // ← alinea el icono con el texto
+  }
+
+  &__pin-icon {
+    font-size: 18px; // ← aquí controlas el tamaño, tan simple como esto
+    line-height: 1;
+  }
+
+  &__waze-icon {
+    width: 14px !important; // Tamaño explícito pequeño
+    height: 14px !important;
+    flex-shrink: 0;
+    display: block; // Evita espacio extra de inline
+  }
+}
   }
 
   &__separador {
@@ -326,14 +336,15 @@ $transicion:        all 0.35s ease;
     margin-bottom: 16px;
   }
 
-  &__descripcion {
-    font-family: $fuente-sans;
-    font-size: 0.85rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.5);
-    max-width: 280px;
-    margin: 0 auto;
-  }
+&__descripcion {
+  font-family: $fuente-sans;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.5);
+  max-width: 280px;
+  margin: 0 auto;
+  margin-bottom: 20px; // ← añade esto
+}
 }
 
 // =====================================================================
@@ -400,22 +411,40 @@ $transicion:        all 0.35s ease;
   }
 
   &__lista {
-    list-style: none;
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  list-style: none;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+}
 
-    li {
-      font-family: $fuente-sans;
-      font-size: 0.9rem;
-      color: $color-gris;
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-    }
+&__lista-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid $color-gris-claro;
+
+  &:first-child {
+    border-top: 1px solid $color-gris-claro;
   }
+}
 
+&__lista-num {
+  font-family: $fuente-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  font-style: italic;
+  color: $color-dorado;
+  min-width: 32px;
+  line-height: 1;
+}
+
+&__lista-texto {
+  font-family: $fuente-sans;
+  font-size: 0.9rem;
+  color: $color-gris;
+  line-height: 1.5;
+}
   &__destino {
     font-size: 0.7rem;
     font-weight: 500;
@@ -468,6 +497,7 @@ $transicion:        all 0.35s ease;
   display: inline-block;
   padding: 16px 48px;
   background: $color-oscuro;
+  border: 1px solid $color-oscuro;
   color: $color-crema;
   font-family: $fuente-sans;
   font-size: 0.75rem;
@@ -499,6 +529,215 @@ $transicion:        all 0.35s ease;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.35);
+  }
+}
+
+// =====================================================================
+// CONTACTO
+// =====================================================================
+.contacto {
+  padding: $espaciado-seccion 0;
+  text-align: center;
+
+  &__titulo {
+    font-family: $fuente-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+
+  &__intro {
+    font-family: $fuente-sans;
+    font-size: 0.9rem;
+    color: $color-gris;
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto 48px;
+  }
+
+  &__personas {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto 48px;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  &__separador {
+    width: 1px;
+    height: 60px;
+    background: $color-gris-claro;
+    margin: 0 40px;
+
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+
+  &__persona {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__nombre {
+    font-family: $fuente-serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    font-style: italic;
+    color: $color-oscuro;
+  }
+
+  &__telefono {
+    font-family: $fuente-sans;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: $color-gris;
+    text-decoration: none;
+    transition: $transicion;
+
+    &:hover {
+      color: $color-dorado;
+    }
+  }
+
+  &__btn-cuenta {
+    display: inline-block;
+    padding: 14px 40px;
+    background: $color-oscuro;
+    border: 1px solid $color-oscuro;
+    color: $color-crema;
+    font-family: $fuente-sans;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: $transicion;
+
+    &:hover {
+      background: $color-dorado;
+      color: #fff;
+    }
+  }
+}
+
+// =====================================================================
+// MODAL
+// =====================================================================
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  &--visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.modal {
+  background: $color-crema;
+  padding: 48px 40px;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  animation: fadeInUp 0.3s ease both;
+
+  &__cerrar {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: $color-gris;
+    cursor: pointer;
+    transition: $transicion;
+    line-height: 1;
+
+    &:hover {
+      color: $color-oscuro;
+    }
+  }
+
+  &__titulo {
+    font-family: $fuente-serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 20px;
+    color: $color-oscuro;
+  }
+
+  &__texto {
+    font-family: $fuente-sans;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: $color-gris;
+    margin-bottom: 32px;
+  }
+
+  &__iban-wrapper {
+    background: #fff;
+    border-top: 2px solid $color-dorado;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__iban-label {
+    font-family: $fuente-sans;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: $color-dorado;
+  }
+
+  &__iban {
+    font-family: $fuente-sans;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: $color-oscuro;
+  }
+
+  &__copiar {
+    background: none;
+    border: 1px solid $color-gris-claro;
+    padding: 8px 24px;
+    font-family: $fuente-sans;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $color-gris;
+    cursor: pointer;
+    transition: $transicion;
+
+    &:hover {
+      border-color: $color-dorado;
+      color: $color-dorado;
+    }
   }
 }
 
