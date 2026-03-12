@@ -31,9 +31,7 @@
   <div class="container">
     <div class="divider"></div>
     <p class="bienvenida__texto">
-      Con mucha alegría queremos compartir con vosotros uno de los días
-      más especiales de nuestras vidas. Será un honor teneros cerca
-      mientras decimos «sí, quiero».
+      "Éste es mi mandamiento: Que os améis unos a otros como yo os he amado." - Juan 15:12
     </p>
     <div class="divider"></div>
   </div>
@@ -54,6 +52,10 @@
       <p class="detalles__descripcion">
         Calle de Toledo, 37, 28005, Madrid
       </p>
+<a href="https://waze.com/ul?q=Calle+de+Toledo+37+Madrid" target="_blank" rel="noopener noreferrer" class="detalles__waze">
+  <span class="material-icons detalles__pin-icon">pin_drop</span>
+  Cómo llegar
+</a>
     </article>
 
     <!-- Separador vertical decorativo (solo en escritorio) -->
@@ -61,13 +63,17 @@
 
     <!-- Celebración -->
     <article class="detalles__card">
-      <span class="detalles__icon">🌿</span>
+      <span class="detalles__icon">🍾</span>
       <h2 class="detalles__titulo">Celebración</h2>
       <p class="detalles__lugar">Finca Astilbe</p>
       <p class="detalles__hora">Desde las 14:30 — 15:00 h</p>
       <p class="detalles__descripcion">
         Carretera de Fuencarral, km 1, 9 28049, Madrid
       </p>
+<a href="https://waze.com/ul?q=Carretera+de+Fuencarral+km+1+Madrid" target="_blank" rel="noopener noreferrer" class="detalles__waze">
+  <span class="material-icons detalles__pin-icon">pin_drop</span>
+  Cómo llegar
+</a>
     </article>
 
   </div>
@@ -95,27 +101,83 @@
           directamente a la Finca Astilbe. Todavía no sabemos exactamente el punto de partida, pero os informaremos con tiempo para que podáis organizaros.
         </p>
       </div>
-
-      <div class="autobuses__item">
-        <h3 class="autobuses__subtitulo">Vuelta</h3>
-        <p>
-          Al finalizar la celebración, dos autobuses estarán disponibles para llevaros de vuelta a Madrid, con dos destinos:
-        </p>
-        <ul class="autobuses__lista">
-          <li>
-            Calle Alcalá, junto a la Plaza de Toros de Las Ventas
-          </li>
-          <li>
-            Glorieta de Ortega y Munilla (Pirámides)
-          </li>
-        </ul>
-      </div>
+<div class="autobuses__item">
+  <h3 class="autobuses__subtitulo">Vuelta</h3>
+  <p>
+    Al finalizar la celebración, dos autobuses estarán disponibles para llevaros de vuelta a Madrid, con dos destinos:
+  </p>
+  <ol class="autobuses__lista">
+    <li class="autobuses__lista-item">
+      <span class="autobuses__lista-num">01</span>
+      <span class="autobuses__lista-texto">Calle Alcalá, junto a la Plaza de Toros de Las Ventas</span>
+    </li>
+    <li class="autobuses__lista-item">
+      <span class="autobuses__lista-num">02</span>
+      <span class="autobuses__lista-texto">Glorieta de Ortega y Munilla (Pirámides)</span>
+    </li>
+  </ol>
+</div>
 
     </div>
     <div class="divider"></div>
   </div>
 </section>
+<!-- =====================================================================
+     AYUDA Y CONTACTO
+     ===================================================================== -->
+<section class="contacto">
+  <div class="container">
+    <h2 class="contacto__titulo">Ayuda y Contacto</h2>
+    <p class="contacto__intro">
+      Si tenéis cualquier duda o necesitáis ayuda con algo, no dudéis
+      en escribirnos. Estaremos encantados de ayudaros.
+    </p>
 
+    <div class="contacto__personas">
+
+      <div class="contacto__persona">
+        <p class="contacto__nombre">Almudena</p>
+        <a href="tel:+34683161722" class="contacto__telefono">+34 683 16 17 22</a>
+      </div>
+
+      <div class="contacto__separador"></div>
+
+      <div class="contacto__persona">
+        <p class="contacto__nombre">Ignacio</p>
+        <a href="tel:+34629387513" class="contacto__telefono">+34 629 38 75 13</a>
+      </div>
+
+    </div>
+
+    <button class="contacto__btn-cuenta" (click)="abrirModalCuenta()">
+      Información para regalo
+    </button>
+
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     MODAL: Cuenta bancaria
+     ===================================================================== -->
+<div class="modal-overlay" [class.modal-overlay--visible]="modalCuentaVisible" (click)="cerrarModalCuenta()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <button class="modal__cerrar" (click)="cerrarModalCuenta()">✕</button>
+    <h3 class="modal__titulo">Información para regalo</h3>
+    <p class="modal__texto">
+      Vuestra presencia es el mejor regalo que podéis hacernos. Si aun
+      así queréis tenernos un detalle, podéis hacerlo a través de la
+      siguiente cuenta bancaria:
+    </p>
+    <div class="modal__iban-wrapper">
+      <p class="modal__iban-label">Número de cuenta</p>
+      <p class="modal__iban">ES00 0000 0000 0000 0000 0000</p>
+      <button class="modal__copiar" (click)="copiarIban()">
+        {{ ibanCopiado ? '¡Copiado!' : 'Copiar' }}
+      </button>
+    </div>
+  </div>
+</div>
 <!-- =====================================================================
      CTA FINAL: Botón para ir al formulario
      ===================================================================== -->
@@ -123,7 +185,7 @@
   <div class="container">
     <h2 class="cta-final__titulo">¿Nos acompañáis?</h2>
     <p class="cta-final__subtitulo">
-      Confirmad vuestra asistencia antes del <strong>30 de junio de 2026</strong>.
+      Confirmad vuestra asistencia antes del <strong>15 de junio de 2026</strong>.
     </p>
     <a routerLink="/formulario" class="btn-primario">
       Confirmar asistencia
