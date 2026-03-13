@@ -354,6 +354,7 @@ $transicion:        all 0.35s ease;
 .autobuses {
   padding: $espaciado-seccion 0;
   text-align: center;
+  text-align: justify;
 
   &__titulo {
     font-family: $fuente-serif;
