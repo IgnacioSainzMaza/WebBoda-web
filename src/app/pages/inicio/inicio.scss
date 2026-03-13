@@ -5,9 +5,9 @@
 // =====================================================================
 
 $color-oscuro:     #0A202F;      // Casi negro, para textos principales
-$color-dorado: #51a1da;
-// $color-dorado:     #b89a6a;      // Dorado suave, acento elegante
-$color-dorado-claro: #85aac5;    // Dorado más claro para hover
+$color-azul: #51a1da;
+$color-dorado:     #b89a6a;      // Dorado suave, acento elegante
+$color-azul-claro: #85aac5;    // azul más claro para hover
 $color-crema:      #f5f0e8;      // Fondo cálido, evita el blanco frío
 $color-gris:       #6b6560;      // Texto secundario
 $color-gris-claro: #e8e2d9;      // Bordes y separadores
@@ -58,8 +58,8 @@ $transicion:        all 0.35s ease;
 // de boda elegante.
 // =====================================================================
 .divider {
-  height: 1px;
-  background: $color-dorado;
+  height: 2px;
+  background: $color-azul;
   opacity: 0.6;
   margin: 48px auto;
   max-width: 300px;
@@ -126,7 +126,7 @@ $transicion:        all 0.35s ease;
     font-weight: 400;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: $color-dorado-claro;
+    color: $color-azul-claro;
     margin-bottom: 24px;
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
   }
@@ -254,7 +254,7 @@ $transicion:        all 0.35s ease;
   display: inline-flex !important;
   align-items: center !important;
   gap: 6px !important;
-  color: $color-dorado-claro !important;
+  color: $color-azul-claro !important;
   font-size: 0.75rem !important;
   letter-spacing: 0.2em !important;
   text-transform: uppercase !important;
@@ -315,7 +315,7 @@ $transicion:        all 0.35s ease;
     font-weight: 400;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: $color-dorado;
+    color: $color-azul;
     margin-bottom: 20px;
   }
 
@@ -333,7 +333,7 @@ $transicion:        all 0.35s ease;
     font-size: 1rem;
     font-weight: 400;
     letter-spacing: 0.2em;
-    color: $color-dorado;
+    color: $color-azul;
     margin-bottom: 16px;
   }
 
@@ -386,7 +386,7 @@ $transicion:        all 0.35s ease;
   &__item {
     background: #fff;
     padding: 36px;
-    border-top: 2px solid $color-dorado;
+    border-top: 2px solid $color-azul;
 
     p {
       font-family: $fuente-sans;
@@ -407,7 +407,7 @@ $transicion:        all 0.35s ease;
     font-weight: 500;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: $color-dorado;
+    color: $color-azul;
     margin-bottom: 16px;
   }
 
@@ -435,7 +435,7 @@ $transicion:        all 0.35s ease;
   font-size: 1.4rem;
   font-weight: 300;
   font-style: italic;
-  color: $color-dorado;
+  color: $color-azul;
   min-width: 32px;
   line-height: 1;
 }
@@ -509,7 +509,7 @@ $transicion:        all 0.35s ease;
   transition: $transicion;
 
   &:hover {
-    background: $color-dorado;
+    background: $color-azul;
     color: #fff;
   }
 }
@@ -605,7 +605,7 @@ $transicion:        all 0.35s ease;
     transition: $transicion;
 
     &:hover {
-      color: $color-dorado;
+      color: $color-azul;
     }
   }
 
@@ -624,7 +624,7 @@ $transicion:        all 0.35s ease;
     transition: $transicion;
 
     &:hover {
-      background: $color-dorado;
+      background: $color-azul;
       color: #fff;
     }
   }
@@ -697,7 +697,7 @@ $transicion:        all 0.35s ease;
 
   &__iban-wrapper {
     background: #fff;
-    border-top: 2px solid $color-dorado;
+    border-top: 2px solid $color-azul;
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -711,7 +711,7 @@ $transicion:        all 0.35s ease;
     font-weight: 500;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: $color-dorado;
+    color: $color-azul;
   }
 
   &__iban {
@@ -736,8 +736,8 @@ $transicion:        all 0.35s ease;
     transition: $transicion;
 
     &:hover {
-      border-color: $color-dorado;
-      color: $color-dorado;
+      border-color: $color-azul;
+      color: $color-azul;
     }
   }
 }
