@@ -354,7 +354,6 @@ $transicion:        all 0.35s ease;
 .autobuses {
   padding: $espaciado-seccion 0;
   text-align: center;
-  text-align: justify;
 
   &__titulo {
     font-family: $fuente-serif;
@@ -390,12 +389,13 @@ $transicion:        all 0.35s ease;
     border-top: 2px solid $color-azul;
 
     p {
-      font-family: $fuente-sans;
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: $color-gris;
-    }
-
+        font-family: $fuente-sans;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: $color-gris;
+    
+        text-align: justify;
+      }
     strong {
       color: $color-oscuro;
       font-weight: 500;
