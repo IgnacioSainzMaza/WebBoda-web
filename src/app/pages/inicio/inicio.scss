@@ -4,9 +4,10 @@
 // en un solo lugar y que el cambio se propague a toda la página.
 // =====================================================================
 
-$color-oscuro:     #1a1a18;      // Casi negro, para textos principales
-$color-dorado:     #b89a6a;      // Dorado suave, acento elegante
-$color-dorado-claro: #d4b896;    // Dorado más claro para hover
+$color-oscuro:     #0A202F;      // Casi negro, para textos principales
+$color-dorado: #51a1da;
+// $color-dorado:     #b89a6a;      // Dorado suave, acento elegante
+$color-dorado-claro: #85aac5;    // Dorado más claro para hover
 $color-crema:      #f5f0e8;      // Fondo cálido, evita el blanco frío
 $color-gris:       #6b6560;      // Texto secundario
 $color-gris-claro: #e8e2d9;      // Bordes y separadores
@@ -253,7 +254,7 @@ $transicion:        all 0.35s ease;
   display: inline-flex !important;
   align-items: center !important;
   gap: 6px !important;
-  color: #b89a6a !important;
+  color: $color-dorado-claro !important;
   font-size: 0.75rem !important;
   letter-spacing: 0.2em !important;
   text-transform: uppercase !important;
