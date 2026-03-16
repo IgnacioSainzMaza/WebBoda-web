@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Compilar Angular
-        run: npm run build -- --configuration production --base-href /WebBoda-web/
+        run: npm run build -- --configuration production --base-href /
 
       - name: Desplegar en GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
