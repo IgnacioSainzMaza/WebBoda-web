@@ -73,10 +73,15 @@ $transicion:        all 0.35s ease;
   height: 100svh;
   min-height: 600px;
   overflow: hidden;
-
-  background-image: url('/assets/seminario3.png');
-  background-size: cover;
-  background-position: center;
+  &__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
 
   &__overlay {
     position: absolute;
