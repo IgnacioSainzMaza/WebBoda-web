@@ -182,15 +182,23 @@
               />
             </div>
 
+            <!-- Autobús de ida -->
             <div class="campo campo--checkbox">
-              <label class="opcion-checkbox">
-                <input type="checkbox" formControlName="autobusIda" />
-                <span class="opcion-checkbox__texto">
-                  Quiero coger el <strong>autobús de ida</strong>
-                  (desde las inmediaciones de la Real Colegiata de San Isidro
-                  hasta la Finca Astilbe)
-                </span>
-              </label>
+              <p class="campo__label">Autobús de ida</p>
+              <p class="campo__descripcion">
+                El autobús saldrá desde las inmediaciones de la
+                <strong>Real Colegiata de San Isidro</strong> hacia la Finca Astilbe.
+              </p>
+              <div class="opciones-radio">
+                <label class="opcion-radio">
+                  <input type="radio" formControlName="autobusIda" [value]="false" />
+                  <span class="opcion-radio__texto">No necesito autobús, iré por mi cuenta</span>
+                </label>
+                <label class="opcion-radio">
+                  <input type="radio" formControlName="autobusIda" [value]="true" />
+                  <span class="opcion-radio__texto">Quiero coger el autobús de ida</span>
+                </label>
+              </div>
             </div>
 
             <div class="campo">
