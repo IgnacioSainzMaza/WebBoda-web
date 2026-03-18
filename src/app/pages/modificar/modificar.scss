@@ -1,13 +1,16 @@
 // =====================================================================
 // VARIABLES (misma paleta que el resto de la aplicación)
 // =====================================================================
-$color-oscuro: #1a1a18;
-$color-dorado: #b89a6a;
-$color-dorado-claro: #d4b896;
-$color-crema: #f5f0e8;
-$color-gris: #6b6560;
-$color-gris-claro: #e8e2d9;
-$color-error: #c0392b;
+$color-oscuro:      #0A202F;
+$color-dorado:      #b89a6a;
+$color-azul:        #51a1da;
+$color-azul-claro: #85aac5;
+$color-dorado-claro:#d4b896;
+$color-crema:       #f5f0e8;
+$color-gris:        #6b6560;
+$color-gris-claro:  #e8e2d9;
+$color-error:       #c0392b;
+$color-exito:       #2d6a4f;
 
 $fuente-serif: 'Cormorant Garamond', 'Garamond', Georgia, serif;
 $fuente-sans: 'Jost', 'Gill Sans', 'Optima', sans-serif;
@@ -62,7 +65,7 @@ $transicion: all 0.25s ease;
         transition: $transicion;
 
         &:hover {
-            color: $color-dorado;
+            color: $color-azul;
         }
     }
 
@@ -72,7 +75,7 @@ $transicion: all 0.25s ease;
         font-weight: 400;
         letter-spacing: 0.4em;
         text-transform: uppercase;
-        color: $color-dorado;
+        color: $color-azul;
         margin-bottom: 12px;
     }
 
@@ -104,8 +107,8 @@ $transicion: all 0.25s ease;
     color: $color-gris;
     line-height: 1.6;
     padding: 16px 20px;
-    border-left: 3px solid $color-dorado;
-    background: rgba($color-dorado, 0.06);
+    border-left: 3px solid $color-azul;
+    background: rgba($color-azul, 0.06);
     margin-bottom: 40px;
 }
 
@@ -120,7 +123,7 @@ $transicion: all 0.25s ease;
         width: 32px;
         height: 32px;
         border: 2px solid $color-gris-claro;
-        border-top-color: $color-dorado;
+        border-top-color: $color-azul;
         border-radius: 50%;
         margin: 0 auto 24px;
         animation: girar 0.8s linear infinite;
@@ -174,8 +177,8 @@ $transicion: all 0.25s ease;
 .btn-secundario {
     display: inline-block;
     padding: 14px 40px;
-    border: 1px solid $color-oscuro;
-    color: $color-oscuro;
+    border: 1px solid $color-azul;
+    color: $color-azul;
     font-family: $fuente-sans;
     font-size: 0.75rem;
     font-weight: 400;
@@ -185,7 +188,7 @@ $transicion: all 0.25s ease;
     transition: $transicion;
 
     &:hover {
-        background: $color-oscuro;
+        background: $color-azul;
         color: $color-crema;
     }
 }
@@ -208,7 +211,7 @@ $transicion: all 0.25s ease;
         font-weight: 500;
         letter-spacing: 0.35em;
         text-transform: uppercase;
-        color: $color-dorado;
+        color: $color-azul;
         padding-bottom: 16px;
         border-bottom: 1px solid $color-gris-claro;
         margin-bottom: 32px;
@@ -279,8 +282,8 @@ $transicion: all 0.25s ease;
         }
 
         &:focus {
-            border-color: $color-dorado;
-            box-shadow: 0 0 0 3px rgba($color-dorado, 0.12);
+            border-color: $color-azul;
+            box-shadow: 0 0 0 3px rgba($color-azul, 0.12);
         }
 
         // Campo deshabilitado: visualmente diferenciado
@@ -335,13 +338,13 @@ $transicion: all 0.25s ease;
             position: absolute;
             inset: 4px;
             border-radius: 50%;
-            background: $color-dorado;
+            background: $color-azul;
             opacity: 0;
             transition: $transicion;
         }
 
         &:checked {
-            border-color: $color-dorado;
+            border-color: $color-azul;
 
             &::after {
                 opacity: 1;
@@ -349,7 +352,7 @@ $transicion: all 0.25s ease;
         }
 
         &:focus-visible {
-            box-shadow: 0 0 0 3px rgba($color-dorado, 0.2);
+            box-shadow: 0 0 0 3px rgba($color-azul, 0.2);
         }
     }
 
@@ -393,8 +396,8 @@ $transicion: all 0.25s ease;
         }
 
         &:checked {
-            background: $color-dorado;
-            border-color: $color-dorado;
+            background: $color-azul;
+            border-color: $color-azul;
 
             &::after {
                 opacity: 1;
@@ -402,7 +405,7 @@ $transicion: all 0.25s ease;
         }
 
         &:focus-visible {
-            box-shadow: 0 0 0 3px rgba($color-dorado, 0.2);
+            box-shadow: 0 0 0 3px rgba($color-azul, 0.2);
         }
     }
 
@@ -449,7 +452,7 @@ $transicion: all 0.25s ease;
     transition: $transicion;
 
     &:hover:not(:disabled) {
-        background: $color-dorado;
+        background: $color-azul;
     }
 
     &:disabled {
@@ -478,7 +481,7 @@ $transicion: all 0.25s ease;
 
     &__icono {
         font-size: 2rem;
-        color: $color-dorado;
+        color: $color-azul;
         margin-bottom: 32px;
         display: block;
     }
