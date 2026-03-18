@@ -1,13 +1,13 @@
 import { Component, signal, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { InvitadoService } from '../../core/services/invitado';
 import { TipoAutobusVuelta } from '../../core/models/invitado.model';
 
 @Component({
   selector: 'app-modificar',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './modificar.html',
   styleUrl: './modificar.scss'
 })
