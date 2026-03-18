@@ -46,6 +46,7 @@ export class Modificar implements OnInit {
       email:                   [{ value: '', disabled: true }],
       asistencia:              [null, Validators.required],
       condicionesAlimentarias: [''],
+      cancion:                 [''],
       autobusIda:              [false],
       autobusVuelta:           [TipoAutobusVuelta.NoCogeAutobus]
     });
@@ -76,6 +77,7 @@ export class Modificar implements OnInit {
           email:                   invitado.email,
           asistencia:              invitado.asistencia,
           condicionesAlimentarias: invitado.condicionesAlimentarias ?? '',
+          cancion:                 invitado.cancion ?? '',
           autobusIda:              invitado.autobusIda,
           autobusVuelta:           invitado.autobusVuelta
         });
@@ -118,9 +120,9 @@ export class Modificar implements OnInit {
       apellidos:               datos.apellidos,
       asistencia:              datos.asistencia,
       condicionesAlimentarias: datos.condicionesAlimentarias || null,
+      cancion:                 datos.cancion || null,
       autobusIda:              datos.autobusIda,
-      autobusVuelta:           datos.autobusVuelta,
-      cancion:                 null
+      autobusVuelta:           datos.autobusVuelta
     }).subscribe({
       next: () => {
         this.enviando.set(false);
