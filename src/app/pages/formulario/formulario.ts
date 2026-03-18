@@ -53,6 +53,7 @@ export class Formulario {
       email:                   ['', [Validators.required, Validators.email]],
       asistencia:              [null, Validators.required],
       condicionesAlimentarias: [''],
+      cancion:                 [''],
       autobusIda:              [false],
       autobusVuelta:           [TipoAutobusVuelta.NoCogeAutobus]
     });
