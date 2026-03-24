@@ -25,7 +25,7 @@ export class Inicio {
   }
 
   copiarIban(): void {
-    navigator.clipboard.writeText('ES00 0000 0000 0000 0000 0000').then(() => {
+    navigator.clipboard.writeText('ES79 2100 5550 1502 0064 9048').then(() => {
       this.ibanCopiado = true;
       setTimeout(() => this.ibanCopiado = false, 2500);
     });
