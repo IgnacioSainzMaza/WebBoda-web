@@ -1,19 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <script>
-  (function() {
-    var redirect = new URLSearchParams(window.location.search).get('redirect');
-    if (redirect) {
-      window.history.replaceState(null, null, redirect);
-    }
-  })();
-</script>
+    (function() {
+      var redirect = new URLSearchParams(window.location.search).get('redirect');
+      if (redirect) {
+        window.history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+
   <meta charset="utf-8">
-  <title>Almudena & Ignacio</title>
+
+  <!-- TÍTULO Y DESCRIPCIÓN: lo que aparece en Google -->
+  <title>Boda Almudena & Ignacio · 18 de julio de 2026</title>
+  <meta name="description" content="Celebra con nosotros nuestra boda el 18 de julio de 2026. Confirma tu asistencia y consulta todos los detalles del gran día." />
+
+  <!-- CANONICAL: le dice a Google cuál es la URL oficial -->
+  <link rel="canonical" href="https://www.bodaalmueignacio.es/" />
+
+  <!-- ROBOTS: permite indexación -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- OPEN GRAPH: cómo se ve al compartir en WhatsApp, Instagram, etc. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.bodaalmueignacio.es/" />
+  <meta property="og:title" content="Boda Almudena & Ignacio · 18 de julio de 2026" />
+  <meta property="og:description" content="Celebra con nosotros nuestra boda el 18 de julio de 2026. Confirma tu asistencia y consulta todos los detalles del gran día." />
+  <meta property="og:locale" content="es_ES" />
+
+  <!-- VIEWPORT -->
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FAVICON -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- MATERIAL ICONS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
