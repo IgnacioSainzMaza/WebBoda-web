@@ -525,14 +525,24 @@ $transicion:        all 0.35s ease;
 // =====================================================================
 .footer {
   padding: 32px;
-  text-align: center;
   border-top: 1px solid $color-gris-claro;
   background: $color-oscuro;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  &__sello {
+    grid-column: 2;
+    width: 100px;
+    opacity: 0.7;
+  }
 
   p {
+    grid-column: 3;
     font-family: $fuente-sans;
     font-size: 0.75rem;
     font-weight: 300;
+    text-align: right;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.35);
